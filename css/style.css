@@ -1,0 +1,66 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.row {
+	display: block;
+	position: relative;
+	height: auto;
+	width: 300px;
+	padding: 10px;
+	margin: 10px;
+    float: left;
+	border: solid 0.5px silver;
+	background-color: rgba(148, 142, 136, 0.1);
+}
+.name{
+	width: auto;
+	font-size: 1.9em;
+}
+.avatar{
+ margin: 0 auto;
+ width: 128px;
+}
+
+.btn{
+-webkit-appearance: default-button;
+
+
+}
+.showD{
+	margin: 5px auto;
+	width: 63px;
+	
+}
+.inform{
+    position: relative;
+	margin: 5px;
+	padding: 5px;
+	border: solid 0.5px silver;
+	height: auto;
+	overflow: scroll;
+	overflow-wrap: break-word;  
+}
+/* #emp_wr{
+	width: 12%;
+	margin-left:3%;
+	display:block;
+} */
+/* #slaves_list{
+	position: relative;
+width: 200px;
+	display: block;
+	left: 200px;
+	bottom: 950px;
+		}
+		#line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    stroke: #F00;
+    stroke-width: 2px;
+    z-index: -1;
+} */
