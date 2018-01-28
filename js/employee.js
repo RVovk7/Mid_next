@@ -12,7 +12,6 @@ xhr.onreadystatechange = () => {
   }
 }
 xhr.send();
-let objS = {},arrS = [], arrP = [];
 function createUi(arrUsers) {
   let parentDiv = document.getElementById('emp_wr');
 
@@ -45,12 +44,8 @@ function createUi(arrUsers) {
       let inform = document.createElement('div');
       let delSlave = document.querySelectorAll('.inform');
       delSlave.id = event.target.id;
-    
-
-      //let delSalveM = delSlave.map(e  =>   delSlave.indexOf(e) );
       let j = 0;
-      if (detail.innerHTML == 'Detail') {
-        arrS.push(event.target.id);
+      if (detail.innerHTML == 'Detail' && delSlave.length <=0) {
 
 
         detail.innerHTML = 'Hide';
@@ -61,28 +56,12 @@ function createUi(arrUsers) {
 
 
       }
-      else {
-         
-
-        arrS.sort(function (a, b) {
-          return a - b;
-        });
-        for (let i = 0; i < delSlave.length; i++) {
-          arrP.push(i);
-        }
-        arrS.forEach((e, i) => {
-         
-          objS[e] = arrP[arrS.indexOf(e)];
-
-        });
-
+      else 
+      if(detail.innerHTML == 'Hide'){
       
         detail.innerHTML = 'Detail';
 
-
-        
-       
-        delSlave[objS[event.target.id]].remove();
+         delSlave[0].remove();
 
 
 
