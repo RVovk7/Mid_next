@@ -34,40 +34,27 @@ function createUi(arrUsers) {
     let detail = document.createElement('button');
     detail.classList.add('btn');
     detail.innerHTML = 'Detail';
-
     detail.id = i;
-
+    
     detail.addEventListener('click', det);
-
-
+    
     function det() {
       let inform = document.createElement('div');
       let delSlave = document.querySelectorAll('.inform');
       delSlave.id = event.target.id;
       let j = 0;
-      if (detail.innerHTML == 'Detail' && delSlave.length <=0) {
-
-
+      if (detail.innerHTML == 'Detail' && delSlave.length <= 0) {
         detail.innerHTML = 'Hide';
         inform.classList.add('inform');
         inform.innerHTML = `UserName: ${el.userName} <br> Email: ${el.email} <br>  BirthDate: ${el.birthDate}`;
         currentDiv.appendChild(inform);
         boss_id(arrUsers);
-
-
       }
-      else 
-      if(detail.innerHTML == 'Hide'){
-      
-        detail.innerHTML = 'Detail';
-
-         delSlave[0].remove();
-
-
-
-
-
-      }
+      else
+        if (detail.innerHTML == 'Hide') {
+          detail.innerHTML = 'Detail';
+          delSlave[0].remove();
+        }
     }
 
     ////structure create
@@ -90,7 +77,6 @@ function boss_id(arrUsers) {
   let divSlave = document.createElement('div');
   divSlave.classList.add('slaves');
 
-
   slave = document.getElementsByClassName('inform');
   divSlave.innerHTML = `Slaves list:`;
   let ol_list = document.createElement('ol');
@@ -102,6 +88,7 @@ function boss_id(arrUsers) {
   divSlave.appendChild(ol_list);
   slave[slave.length - 1].appendChild(divSlave);
   ol_list.type = "I";
+  
   slaves.forEach(el => {
     let current_slave = document.createElement('li');
     current_slave.classList.add = ('sl_row')
