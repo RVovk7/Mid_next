@@ -12,7 +12,7 @@ xhr.onreadystatechange = () => {
   }
 }
 xhr.send();
-let objS = {}, count = 0,arrS = [];
+let objS = {},arrS = [], arrP = [];
 function createUi(arrUsers) {
   let parentDiv = document.getElementById('emp_wr');
 
@@ -37,48 +37,60 @@ function createUi(arrUsers) {
     detail.innerHTML = 'Detail';
 
     detail.id = i;
+
     detail.addEventListener('click', det);
+
 
     function det() {
       let inform = document.createElement('div');
-    let delSlave = document.querySelectorAll('.inform');
-    delSlave.id = event.target.id;
-    arrS = [].slice.call(event.target.id);
-   
+      let delSlave = document.querySelectorAll('.inform');
+      delSlave.id = event.target.id;
+    
+
+      //let delSalveM = delSlave.map(e  =>   delSlave.indexOf(e) );
+      let j = 0;
       if (detail.innerHTML == 'Detail') {
-        arrS.forEach((e,i) =>{
-          objS[e]=count++;
-          });
-        
-       
+        arrS.push(event.target.id);
+
+
         detail.innerHTML = 'Hide';
         inform.classList.add('inform');
         inform.innerHTML = `UserName: ${el.userName} <br> Email: ${el.email} <br>  BirthDate: ${el.birthDate}`;
         currentDiv.appendChild(inform);
         boss_id(arrUsers);
-       
+
+
       }
       else {
-       // console.log(objS[count]);
-           detail.innerHTML = 'Detail';
-        console.log(delSlave.id);
          
-         console.log(objS);
-         // console.log(filtS);
-    
-        console.log(delSlave);
-        //debugger;
-        
-          //delSlave[objS[delSlave.id]].remove();
-        
-           
+
+        arrS.sort(function (a, b) {
+          return a - b;
+        });
+        for (let i = 0; i < delSlave.length; i++) {
+          arrP.push(i);
+        }
+        arrS.forEach((e, i) => {
          
-          
+          objS[e] = arrP[arrS.indexOf(e)];
+
+        });
+
       
+        detail.innerHTML = 'Detail';
+
+
+        
+       
+        delSlave[objS[event.target.id]].remove();
+
+
+
+
+
+      }
     }
 
-    }
-    
     ////structure create
     currentDiv.appendChild(name);
     currentDiv.appendChild(avatar);
@@ -91,25 +103,25 @@ function createUi(arrUsers) {
 }
 //////////// output slaves list
 function boss_id(arrUsers) {
-  
+
   let user = arrUsers[event.target.id];
   let slaves = arrUsers.filter(el => el.bossid > user.bossid);
-  
-  let slave =  document.getElementsByClassName('inform');
-   let divSlave = document.createElement('div');
-   divSlave.classList.add('slaves');
-  
-  
-  slave =  document.getElementsByClassName('inform');
+
+  let slave = document.getElementsByClassName('inform');
+  let divSlave = document.createElement('div');
+  divSlave.classList.add('slaves');
+
+
+  slave = document.getElementsByClassName('inform');
   divSlave.innerHTML = `Slaves list:`;
   let ol_list = document.createElement('ol');
-  
+
   if (slaves.length == 0) {
     ol_list.innerHTML = "No one slave (";
   }
-  
+
   divSlave.appendChild(ol_list);
-  slave[slave.length-1].appendChild(divSlave);
+  slave[slave.length - 1].appendChild(divSlave);
   ol_list.type = "I";
   slaves.forEach(el => {
     let current_slave = document.createElement('li');
